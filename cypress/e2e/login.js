@@ -1,8 +1,7 @@
 /// <reference types="cypress" />
 
-import { homePage, loginFormPage } from '../pages/index'
+import { homePage, loginFormPage, dashboard } from '../pages/index'
 import { userDetails, validAuthUser, invalidAuthUser } from '../fixtures/test_data'
-import dashboard from '../pages/dashboard'
 
   describe('Validate Account Creation', function() {
     beforeEach(function()  {
@@ -40,7 +39,7 @@ import dashboard from '../pages/dashboard'
     it('Validate login with valid credentials', function() {
       homePage.getSignInButton().click({force: true})
       loginFormPage.login(validAuthUser)
-      dashboard.verifyUserName(validAuthUser)
+      dashboard.verifyUserName()
     })
 
     it('Validate login with invalid credentials', function() {
