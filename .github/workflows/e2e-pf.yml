@@ -25,12 +25,8 @@ jobs:
           install-command: npm install
           command: npm run cy:run
 
-  upload-test-report:
-    needs: e2e-tests
-    runs-on: ubuntu-latest
-    if: ${{ always() }}  
-    steps:
       - name: Upload Test Report
+        if: ${{ always() }} 
         uses: actions/upload-artifact@v2
         with:
           name: Test Reports

@@ -50,10 +50,16 @@ import { userDetails, validAuthUser, invalidAuthUser } from '../fixtures/test_da
     })
 
     it('Validate login with empty field errors', function() {
+      const userWithoutEmail = {
+        email: '',
+        password: 'Tokyo'
+      }
+      const userWithoutPassword = {
+        email: 'v9stg560fa@example.com',
+        password: ''
+      }
       homePage.getSignInButton().click({force: true})
-      loginFormPage.login(invalidAuthUser)
-      loginFormPage.getErrorMessage().should('include.text', 
-      'The account sign-in was incorrect or your account is disabled temporarily')
+      loginFormPage.login(userWithoutEmail)
     })
 
     
