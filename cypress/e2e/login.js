@@ -49,9 +49,14 @@ import { userDetails, validAuthUser, invalidAuthUser } from '../fixtures/test_da
       'The account sign-in was incorrect or your account is disabled temporarily')
     })
 
-    // it('Validate forgot password link',function(){
+    it('Validate login with empty field errors', function() {
+      homePage.getSignInButton().click({force: true})
+      loginFormPage.login(invalidAuthUser)
+      loginFormPage.getErrorMessage().should('include.text', 
+      'The account sign-in was incorrect or your account is disabled temporarily')
+    })
 
-    // })
+    
 
   })
 
