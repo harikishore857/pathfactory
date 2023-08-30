@@ -39,7 +39,7 @@ import { userDetails, validAuthUser, invalidAuthUser } from '../fixtures/test_da
     it('Validate login with valid credentials', function() {
       homePage.getSignInButton().click({force: true})
       loginFormPage.login(validAuthUser)
-      dashboard.verifyUserName()
+      dashboard.verifyUserName(validAuthUser)
     })
 
     it('Validate login with invalid credentials', function() {
@@ -49,17 +49,24 @@ import { userDetails, validAuthUser, invalidAuthUser } from '../fixtures/test_da
       'The account sign-in was incorrect or your account is disabled temporarily')
     })
 
-    it('Validate login with empty field errors', function() {
+    it('Validate login with empty field errors - leaving email field', function() {
       const userWithoutEmail = {
         email: '',
         password: 'Tokyo'
       }
+      homePage.getSignInButton().click({force: true})
+      loginFormPage.login(userWithoutEmail)
+      cy.get('#email-error').should('be.visible')
+    })
+
+    it('Validate login with empty field errors - leaving email field', function() {
       const userWithoutPassword = {
         email: 'v9stg560fa@example.com',
         password: ''
       }
       homePage.getSignInButton().click({force: true})
-      loginFormPage.login(userWithoutEmail)
+      loginFormPage.login(userWithoutPassword)
+      cy.get('#pass-error').should('be.visible')
     })
 
     
