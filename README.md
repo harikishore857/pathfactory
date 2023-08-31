@@ -8,6 +8,9 @@ There is a job defined in the e2e-pf.yml workflow, which will take care of uploa
 
 When the tests are run locally using `npm run cy:run` then the test report will be under cypress/reports. There will be an html file
 
+<img width="1428" alt="Screen Shot 2023-08-30 at 8 28 03 PM" src="https://github.com/harikishore857/pathfactory/assets/110117288/49d19377-4919-4f6c-a55c-f76d8ecd2ff6">
+
+
 ## Available Scripts
 
 In the project directory, you can run:
