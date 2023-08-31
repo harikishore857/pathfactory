@@ -20,10 +20,6 @@ export default class loginFormPage {
     return cy.get('.action.submit.primary')
   }
 
-  static validateError() {
-    cy.contains('These credentials do not match our records.').should('be.visible')
-  }
-
   static getErrorMessage() {
     return cy.get('.message-error')
   }
@@ -42,6 +38,15 @@ export default class loginFormPage {
   static forgotPassword(){
     cy.get('.action.remind').click({force: true})
     if(email) cy.get('#email_address').type(email)
+  }
+
+  static getForgotPasswordButton() {
+    return cy.get('.action.remind')
+  }
+
+  static verifyUserNavigatedToForgotPassword() {
+    cy.url().should('include', '/customer/account/forgotpassword/')
+    cy.contains('Forgot Your Password?').should('be.visible')
   }
 
 }
